@@ -1,0 +1,21 @@
+org: sadek
+app: lambda-chatgpt
+service: lambda-chatgpt
+plugins:
+  - serverless-plugin-typescript
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stackName: lambda-chatgpt
+  region: us-east-2
+  versionFunctions: false
+  environment:
+    OPENAI_KEY: ${env:OPENAI_KEY}
+    RESEND_API_KEY: ${env:RESEND_API_KEY}
+
+functions:
+  getjoke:
+    handler: handler.main
+    url: true
